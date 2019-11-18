@@ -74,7 +74,10 @@
         src: "/etc/nginx/sites-available/nfq-wiki-services"
         dest: "/etc/nginx/sites-enabled/nfq-wiki-services"
         state: link
-        
+
+    - name: test
+      shell: echo {{ workspace }}
+
   handlers:
     - name: Restart Nginx
       become: true
