@@ -1,3 +1,2 @@
 [kyln_root]
 kyln_root ansible_ssh_host=kyln_root
-workspace=/var/lib/jenkins/workspace/DEPLOY_nfq_wiki_services_staging
