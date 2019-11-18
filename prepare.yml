@@ -1,0 +1,79 @@
+---
+- hosts: kyln_root
+  # become: yes
+  # become_user: root
+  # gather_facts: no
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: Install python software properties
+      shell: apt install -y python-software-properties
+
+    - name: Add repository for PHP
+      apt_repository:
+        repo: ppa:ondrej/php
+        state: present
+        update_cache: yes
+
+    - name: install essential packages
+      apt:
+        name: "{{ system_packages }}"
+        update_cache: yes
+      vars:
+        system_packages:
+          - nano
+          - lsof
+          - git
+          - zip
+          - htop
+          - wget
+          - curl
+          - iotop
+          - unzip
+          - nginx
+          - php7.2-fpm
+
+    - shell: php --version
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines
+
+    - name: Install PHP packages
+      apt:
+        name:
+          - php7.2-gd
+          - php7.2-intl
+          - php7.2-xsl
+          - php7.2-xml
+          - php7.2-mbstring
+        state: latest
+      notify: reload PHP-FPM
+
+    - name: Install Composer
+      shell: apt install composer -y
+  
+    - name: create deploy directory
+      file:
+        path: "/var/www/nfq-wiki-services/current"
+        state: "directory" 
+        owner: "root"
+        group: "root"
+        mode: 0755
+
+    - name: copy nginx config file to remote
+      copy:
+        src: "miscellaneous/nfq-wiki-services"
+        dest: "/etc/nginx/sites-available/nfq-wiki-services"
+        owner: "root"
+        group: "root"
+        mode: 0644
+      notify: reload nginx
+
+    - name: link nginx file
+      file:
+        src: "/etc/nginx/sites-available/nfq-wiki-services"
+        dest: "/etc/nginx/sites-enabled/nfq-wiki-services"
+        state: link
+      notify: reload nginx
