@@ -1,0 +1,2 @@
+[kyln_root]
+kyln_root ansible_ssh_host=kyln_root
