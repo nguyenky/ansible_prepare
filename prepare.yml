@@ -49,7 +49,6 @@
           - php7.2-xml
           - php7.2-mbstring
         state: latest
-      notify: reload PHP-FPM
 
     - name: Install Composer
       shell: apt install composer -y
@@ -69,11 +68,22 @@
         owner: "root"
         group: "root"
         mode: 0644
-      notify: reload nginx
 
     - name: link nginx file
       file:
         src: "/etc/nginx/sites-available/nfq-wiki-services"
         dest: "/etc/nginx/sites-enabled/nfq-wiki-services"
         state: link
-      notify: reload nginx
+        
+  handlers:
+    - name: Restart Nginx
+      become: true
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Restart PHP-FPM
+      become: true
+      service:
+        name: php7.3-fpm
+        state: restarted
