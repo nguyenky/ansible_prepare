@@ -1,0 +1,22 @@
+- name: modify ownership & permissions of a storage
+  file:
+    path: "/var/www/nfq-wiki-services/current/storage"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: yes
+    mode: 0755
+  # become: yes
+  # become_method: sudo
+  # become_user: root
+
+- name: modify ownership & permissions of a public
+  file:
+    path: "/var/www/nfq-wiki-services/current/public"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0755
+  # become: yes
+  # become_method: sudo
+  # become_user: root

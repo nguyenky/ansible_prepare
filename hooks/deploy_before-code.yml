@@ -1,0 +1,15 @@
+- name: Git Checkout
+  local_action: git repo=https://github.com/nguyenky/current dest="/var/jenkins_home/workspace/prepare_source" force=yes update=yes version=master depth=1
+  become: yes
+  become_user: jenkins
+
+- name: Copy Env file
+  local_action: copy src={{ playbook_dir }}/env-files/.env dest=/var/jenkins_home/workspace/prepare_source/.env owner=jenkins group=jenkins mode=0644
+  delegate_to: localhost
+  become: yes
+  become_user: jenkins
+
+- name: Composer Install
+  local_action: shell cd /var/jenkins_home/workspace/prepare_source && echo "composer install"
+  become: yes
+  become_user: jenkins

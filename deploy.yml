@@ -1,0 +1,20 @@
+---
+- hosts: kyln_root
+  # become: yes
+  # become_user: root
+
+  vars:
+    ansistrano_deploy_from: "/var/jenkins_home/workspace/prepare_source/."
+    ansistrano_deploy_to: "/var/www/nfq-wiki-services"
+    ansistrano_keep_releases: 3
+    ansistrano_deploy_via: "rsync"
+    ansistrano_rsync_extra_params: --exclude=.git
+    ansistrano_ensure_shared_paths_exist: yes
+    ansistrano_ensure_basedirs_shared_files_exist: yes
+    ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/hooks/deploy_before-code.yml"
+    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/hooks/deploy_after-symlink.yml"
+    ansistrano_before_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-before-cleanup-tasks.yml"
+    ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-after-cleanup-tasks.yml"
+
+  roles:
+    - { role: ansistrano.deploy }

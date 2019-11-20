@@ -1,0 +1,32 @@
+- name: modify ownership & permissions of a storage
+  file:
+    path: "/var/www/nfq-wiki-services/current/storage"
+    state: directory
+    owner: www-data
+    group: www-data
+    recurse: yes
+    mode: 0755
+  # become: yes
+  # become_method: sudo
+  # become_user: root
+
+- name: modify ownership & permissions of a public
+  file:
+    path: "/var/www/nfq-wiki-services/current/public"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0755
+  # become: yes
+  # become_method: sudo
+  # become_user: root
+
+# - name: Database Migration
+#   shell: "cd /var/www/nfq-wiki-services/current && php artisan migrate"
+#   become: yes
+#   become_user: www-data
+
+# - name: Restart PM2
+#   shell: "cd /var/www/nfq-wiki-services/current && /bin/bash -c 'source $HOME/.nvm/nvm.sh && pm2 startOrRestart worker.yml'"
+#   become: yes
+#   become_user: ubuntu

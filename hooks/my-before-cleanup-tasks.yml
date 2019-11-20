@@ -1,0 +1,11 @@
+- name: reset ownership & permissions of a storage
+  file:
+    path: "/var/www/nfq-wiki-services/releases"
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    recurse: yes
+    mode: 0755
+  become: yes
+  become_method: sudo
+  become_user: root
