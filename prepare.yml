@@ -55,7 +55,7 @@
   
     - name: create deploy directory
       file:
-        path: "/var/www/nfq-wiki-services/current"
+        path: "/var/www/nfq-wiki-services"
         state: "directory" 
         owner: "root"
         group: "root"

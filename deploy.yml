@@ -6,8 +6,8 @@
     ansistrano_keep_releases: 3
     ansistrano_deploy_via: git
     ansistrano_git_repo: "https://github.com/nguyenky/current.git"
-    ansistrano_before_setup_tasks_file: "/var/jenkins_home/workspace/prepare_env/hooks/deploy_before-code.yml"
-    ansistrano_after_symlink_tasks_file: "/var/jenkins_home/workspace/prepare_env/hooks/deploy_after-symlink.yml"
+    ansistrano_before_setup_tasks_file: "/Users/lenguyenky/nguyenky/devops/ansible_prepare/hooks/deploy_before-code.yml"
+    ansistrano_after_symlink_tasks_file: "/Users/lenguyenky/nguyenky/devops/ansible_prepare/hooks/deploy_after-symlink.yml"
 
   roles:
     - { role: ansistrano.deploy, tags: deploy }

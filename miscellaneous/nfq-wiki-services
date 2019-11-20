@@ -3,7 +3,7 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    root /var/www/nfq-wiki-services/current/public;
+    root /var/www/nfq-wiki-services/public;
     index index.php index.html index.htm;
 
     location / {
