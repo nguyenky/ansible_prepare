@@ -74,6 +74,27 @@
         src: "/etc/nginx/sites-available/nfq-wiki-services"
         dest: "/etc/nginx/sites-enabled/nfq-wiki-services"
         state: link
+
+    - name: Clone git repository
+      git: >
+        dest=/var/www/nfq-wiki-services
+        repo=https://github.com/nguyenky/current.git
+        update=no
+        
+    - name: pull git repository
+      shell: cd /var/www/nfq-wiki-services && git pull origin master
+
+    - name: Copy Env file
+      shell: cp /var/www/nfq-wiki-services/.env.example /var/www/nfq-wiki-services/.env
+    
+    - name: Composer Install
+      shell: cd /var/www/nfq-wiki-services && composer install
+
+    - name: Genera key
+      shell: cd /var/www/nfq-wiki-services && ./artisan key:generate
+
+    - name: Chomd
+      shell: cd /var/www/nfq-wiki-services && chmod -R 777 storage/logs
         
   handlers:
     - name: Restart Nginx
@@ -85,5 +106,5 @@
     - name: Restart PHP-FPM
       become: true
       service:
-        name: php7.3-fpm
+        name: php7.2-fpm
         state: restarted
