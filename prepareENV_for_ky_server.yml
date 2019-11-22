@@ -1,8 +1,5 @@
 ---
 - hosts: gg_server_jenkins
-  module_defaults:
-    apt:
-      force_apt_get: yes # fix warning counld not find aptitude. Using apt-get instead
   become: yes
   become_user: lenguyenky
   become_method: sudo
@@ -12,4 +9,4 @@
       ping:
 
     - name: Apt update
-      shell: apt update
+      shell: apt-get update
