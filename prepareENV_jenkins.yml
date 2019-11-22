@@ -1,5 +1,5 @@
 ---
-- hosts: kyln_root
+- hosts: cho_y
   become: yes
   become_user: lenguyenky
   become_method: sudo
