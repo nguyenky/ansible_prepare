@@ -4,6 +4,9 @@
   become_user: lenguyenky
   become_method: sudo
   gather_facts: no
+  module_defaults:
+    apt:
+      force_apt_get: yes # fix warning counld not find aptitude. Using apt-get instead
   tasks:
     - name: Ping
       ping:
