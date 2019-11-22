@@ -8,6 +8,9 @@
     - name: Ping
       ping:
 
+    - name: asds
+      shell: apt update
+      
     - name: install essential packages
       apt:
         name: "{{ system_packages }}"
