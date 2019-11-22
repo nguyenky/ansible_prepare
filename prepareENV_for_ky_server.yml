@@ -7,3 +7,6 @@
   tasks:
     - name: Ping
       ping:
+
+    - name: Install python software properties
+      shell: apt install -y python-software-properties
