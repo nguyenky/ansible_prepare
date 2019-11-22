@@ -9,7 +9,7 @@
       ping:
 
     - name: asds
-      command: apt update
+      command: sudo apt update
 
     - name: install essential packages
       apt:
