@@ -8,5 +8,20 @@
     - name: Ping
       ping:
 
-    - name: Apt update
-      shell: apt-get update
+    - name: install essential packages
+      apt:
+        name: "{{ system_packages }}"
+        update_cache: yes
+      vars:
+        system_packages:
+          - nano
+          # - lsof
+          # - git
+          # - zip
+          # - htop
+          # - wget
+          # - curl
+          # - iotop
+          # - unzip
+          # - nginx
+          # - php7.2-fpm
