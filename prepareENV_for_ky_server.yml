@@ -7,7 +7,7 @@
   tasks:
     - name: Ping
       ping:
-      
+
     - name: Add repository for PHP
       apt_repository:
         repo: ppa:ondrej/php
@@ -29,5 +29,46 @@
           - curl
           - iotop
           - unzip
-          # - nginx
-          # - php7.2-fpm
+          - nginx
+          - php7.2-fpm
+
+    - shell: php --version
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines
+
+    - name: Install PHP packages
+      apt:
+        name:
+          - php7.2-gd
+          - php7.2-intl
+          - php7.2-xsl
+          - php7.2-xml
+          - php7.2-mbstring
+        state: latest
+
+    - name: Install Composer
+      shell: apt install composer -y
+
+    - name: create deploy directory
+      file:
+        path: "/var/www/kyln"
+        state: "directory" 
+        owner: "root"
+        group: "root"
+        mode: 0755
+
+    - name: copy nginx config file to remote
+      copy:
+        src: "miscellaneous/kyln"
+        dest: "/etc/nginx/sites-available/kyln"
+        owner: "root"
+        group: "root"
+        mode: 0644
+
+    - name: link nginx file
+      file:
+        src: "/etc/nginx/sites-available/kyln"
+        dest: "/etc/nginx/sites-enabled/kyln"
+        state: link
