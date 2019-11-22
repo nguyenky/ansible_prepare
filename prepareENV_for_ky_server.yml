@@ -2,7 +2,7 @@
 - hosts: gg_server_jenkins
   become: yes
   become_user: lenguyenky
-  sudo: yes
+  become_method: sudo
   gather_facts: no
   tasks:
     - name: Ping
