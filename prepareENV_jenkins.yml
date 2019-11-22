@@ -1,8 +1,9 @@
 ---
-- hosts: cho_y
+- hosts: kyln_root
   become: yes
   become_user: lenguyenky
-  gather_facts: no
+  become_method: sudo
+  gather_facts: false
   tasks:
     - name: Ping
       ping:
