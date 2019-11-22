@@ -9,8 +9,8 @@
       ping:
 
     - name: asds
-      shell: apt update
-      
+      command: apt update
+
     - name: install essential packages
       apt:
         name: "{{ system_packages }}"
