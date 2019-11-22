@@ -7,10 +7,7 @@
   tasks:
     - name: Ping
       ping:
-
-    - name: Install python software properties
-      shell: apt install -y python-software-properties
-    
+      
     - name: Add repository for PHP
       apt_repository:
         repo: ppa:ondrej/php
