@@ -1,0 +1,8 @@
+---
+- hosts: cho_y
+  # become: yes
+  # become_user: lenguyenky
+  # gather_facts: no
+  tasks:
+    - name: Ping
+      ping:
