@@ -1,0 +1,9 @@
+---
+- hosts: gg_server_jenkins
+  # become: yes
+  # become_user: lenguyenky
+  # become_method: sudo
+  gather_facts: false
+  tasks:
+    - name: Ping
+      ping:
