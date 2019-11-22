@@ -1,9 +1,10 @@
 ---
 - hosts: cho_y
-  # become: yes
-  # become_user: lenguyenky
-  # become_method: sudo
+  become: yes
+  become_user: root
+  become_method: sudo
   gather_facts: false
   tasks:
     - name: Ping
       ping:
+        

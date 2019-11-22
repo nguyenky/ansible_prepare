@@ -1,16 +1,21 @@
 ---
 - hosts: gg_server_jenkins
   become: yes
-  # become_user: jenkins
+  become_user: root
   become_method: sudo
-  # gather_facts: no
+  gather_facts: no
   tasks:
     - name: Ping
       ping:
 
-    - name: asds
-      command: apt update
-      sudo: yes
+    - name: Install python software properties
+      shell: apt install -y python-software-properties
+    
+    - name: Add repository for PHP
+      apt_repository:
+        repo: ppa:ondrej/php
+        state: present
+        update_cache: yes
 
     - name: install essential packages
       apt:
@@ -19,14 +24,13 @@
       vars:
         system_packages:
           - nano
-          # - lsof
-          # - git
-          # - zip
-          # - htop
-          # - wget
-          # - curl
-          # - iotop
-          # - unzip
+          - lsof
+          - git
+          - zip
+          - htop
+          - wget
+          - curl
+          - iotop
+          - unzip
           # - nginx
           # - php7.2-fpm
-      sudo: yes
