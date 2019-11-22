@@ -2,8 +2,8 @@
 - hosts: cho_y
   become: yes
   # become_user: root
-  become_method: sudo
-  gather_facts: no
+  # become_method: sudo
+  # gather_facts: no
   tasks:
     - name: Ping
       ping:
