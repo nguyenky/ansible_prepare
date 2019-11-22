@@ -1,2 +1,2 @@
 [cho_y]
-cho_y ansible_ssh_host=cho_y
+34.84.173.235 ansible_user=lenguyenky ansible_ssh_private_key_file=~/.ssh/id_rsa
