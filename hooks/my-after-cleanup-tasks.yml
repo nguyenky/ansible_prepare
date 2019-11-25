@@ -1,6 +1,6 @@
 - name: modify ownership & permissions of a storage
   file:
-    path: "/var/www/nfq-wiki-services/current/storage"
+    path: "{{ deploy_to }}/current/storage"
     state: directory
     owner: www-data
     group: www-data
@@ -12,7 +12,7 @@
 
 - name: modify ownership & permissions of a public
   file:
-    path: "/var/www/nfq-wiki-services/current/public"
+    path: "{{ deploy_to }}/current/public"
     state: directory
     owner: www-data
     group: www-data

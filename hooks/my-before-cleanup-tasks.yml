@@ -1,9 +1,9 @@
 - name: reset ownership & permissions of a storage
   file:
-    path: "/var/www/nfq-wiki-services/releases"
+    path: "{{ deploy_to }}/releases"
     state: directory
-    owner: ubuntu
-    group: ubuntu
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_group }}"
     recurse: yes
     mode: 0755
   become: yes
