@@ -20,5 +20,11 @@
     ansistrano_keep_releases: 3
     # There seems to be an issue with rsync in vagrant
     ansistrano_deploy_via: copy
+
+    # ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/hooks/deploy_before-code.yml"
+    # ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/hooks/deploy_after-symlink.yml"
+    # ansistrano_before_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-before-cleanup-tasks.yml"
+    # ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-after-cleanup-tasks.yml"
+
   roles:
     - { role: ansistrano.deploy }

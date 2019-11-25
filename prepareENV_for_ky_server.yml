@@ -53,7 +53,7 @@
 
     - name: create deploy directory
       file:
-        path: "/var/www/kyln"
+        path: "{{ deploy_to }}"
         state: "directory" 
         owner: "root"
         group: "root"
