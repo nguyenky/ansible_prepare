@@ -5,7 +5,7 @@
 
 - name: Copy Env file
   local_action: copy src={{ playbook_dir }}/env-files/.env dest={{ workspace }}/.env owner=jenkins group=jenkins mode=0644
-  delegate_to: localhost
+  delegate_to: cho_y
   become: yes
   become_user: jenkins
 
