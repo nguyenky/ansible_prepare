@@ -1,13 +1,11 @@
 ---
 - name: "Deploy laravel_demo laravel app"
-  hosts: kyln_root
+  hosts: cho_y
   vars:
-    ansistrano_deploy_to: "/var/www/nfq-wiki-services"
+    ansistrano_deploy_from: "{{ playbook_dir }}/app"
+    ansistrano_deploy_to: "/var/www/kyln"
     ansistrano_keep_releases: 3
-    ansistrano_deploy_via: git
-    ansistrano_git_repo: "https://github.com/nguyenky/current.git"
-    ansistrano_before_setup_tasks_file: "/Users/lenguyenky/nguyenky/devops/ansible_prepare/hooks/deploy_before-code.yml"
-    ansistrano_after_symlink_tasks_file: "/Users/lenguyenky/nguyenky/devops/ansible_prepare/hooks/deploy_after-symlink.yml"
-
+    # There seems to be an issue with rsync in vagrant
+    ansistrano_deploy_via: copy
   roles:
-    - { role: ansistrano.deploy, tags: deploy }
+    - { role: ansistrano.deploy }
