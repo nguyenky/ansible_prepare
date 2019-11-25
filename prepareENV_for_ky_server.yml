@@ -1,5 +1,5 @@
 ---
-- hosts: gg_server_jenkins
+- hosts: cho_y
   become: yes
   become_user: root
   become_method: sudo
