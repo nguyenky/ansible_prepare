@@ -55,20 +55,33 @@
       file:
         path: "{{ deploy_to }}"
         state: "directory" 
-        owner: "root"
-        group: "root"
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_group }}"
         mode: 0755
 
     - name: copy nginx config file to remote
       copy:
-        src: "miscellaneous/kyln"
-        dest: "/etc/nginx/sites-available/kyln"
-        owner: "root"
-        group: "root"
+        src: "{{ nginx_local }}"
+        dest: "/etc/nginx/sites-available/{{ nginx_remote }}"
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_group }}"
         mode: 0644
 
     - name: link nginx file
       file:
-        src: "/etc/nginx/sites-available/kyln"
-        dest: "/etc/nginx/sites-enabled/kyln"
+        src: "/etc/nginx/sites-available/{{ nginx_remote }}"
+        dest: "/etc/nginx/sites-enabled/{{ nginx_remote }}"
         state: link
+
+    handlers:
+    - name: Restart Nginx
+      become: true
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Restart PHP-FPM
+      become: true
+      service:
+        name: php7.2-fpm
+        state: restarted
