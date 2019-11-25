@@ -15,7 +15,7 @@
     # ansistrano_ensure_shared_paths_exist: yes
     # ansistrano_ensure_basedirs_shared_files_exist: yes
 
-    ansistrano_deploy_from: "{{ playbook_dir }}/public"
+    ansistrano_deploy_from: "{{ workspace }}"
     ansistrano_deploy_to: "/var/www/kyln"
     ansistrano_keep_releases: 3
     # There seems to be an issue with rsync in vagrant

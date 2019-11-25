@@ -1,5 +1,5 @@
 - name: Git Checkout
-  local_action: git repo=https://github.com/nguyenky/current.git force=yes update=yes version=master depth=1
+  local_action: git repo=https://github.com/nguyenky/current.git dest="{{ workspace }}" force=yes update=yes version=master depth=1
   become: yes
   become_user: jenkins
 
