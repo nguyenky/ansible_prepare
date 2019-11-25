@@ -6,7 +6,7 @@
   become_method: sudo
   gather_facts: no
   vars:
-    ansistrano_deploy_from: "{{ playbook_dir }}/app"
+    ansistrano_git_repo: "https://github.com/nguyenky/current.git"
     ansistrano_deploy_to: "/var/www/kyln"
     ansistrano_keep_releases: 3
     # There seems to be an issue with rsync in vagrant
