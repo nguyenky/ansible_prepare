@@ -2,4 +2,4 @@
 34.80.192.124 ansible_connection=ssh ansible_user=lenguyenky ansible_private_key_file=/home/lenguyenky/.ssh/id_rsa
 
 [cho_y:vars]
-deploy_to=/var/www/kyly
+deploy_to=/var/www/kyln
