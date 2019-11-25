@@ -1,6 +1,10 @@
 ---
 - name: "Deploy laravel_demo laravel app"
   hosts: cho_y
+  become: yes
+  become_user: root
+  become_method: sudo
+  gather_facts: no
   vars:
     ansistrano_deploy_from: "{{ playbook_dir }}/app"
     ansistrano_deploy_to: "/var/www/kyln"
