@@ -73,7 +73,7 @@
         dest: "/etc/nginx/sites-enabled/{{ nginx_remote }}"
         state: link
 
-    handlers:
+  handlers:
     - name: Restart Nginx
       become: true
       service:
