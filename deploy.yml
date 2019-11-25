@@ -6,13 +6,19 @@
   become_method: sudo
   gather_facts: no
   vars:
-    ansistrano_git_repo: "https://github.com/nguyenky/current.git"
+    # ansistrano_git_repo: "https://github.com/nguyenky/current.git"
+    # ansistrano_deploy_to: "/var/www/kyln"
+    # ansistrano_keep_releases: 3
+    # # There seems to be an issue with rsync in vagrant
+    # aansistrano_deploy_via: "git"
+    # ansistrano_rsync_extra_params: --exclude=.git
+    # ansistrano_ensure_shared_paths_exist: yes
+    # ansistrano_ensure_basedirs_shared_files_exist: yes
+
+    ansistrano_deploy_from: "{{ playbook_dir }}/public"
     ansistrano_deploy_to: "/var/www/kyln"
     ansistrano_keep_releases: 3
     # There seems to be an issue with rsync in vagrant
-    aansistrano_deploy_via: "git"
-    ansistrano_rsync_extra_params: --exclude=.git
-    ansistrano_ensure_shared_paths_exist: yes
-    ansistrano_ensure_basedirs_shared_files_exist: yes
+    ansistrano_deploy_via: copy
   roles:
     - { role: ansistrano.deploy }
