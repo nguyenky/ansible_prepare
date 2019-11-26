@@ -2,7 +2,7 @@
 34.80.192.124 ansible_connection=ssh ansible_user=lenguyenky ansible_private_key_file=/var/lib/jenkins/.ssh/cho_y
 
 [cho_y:vars]
-workspace=/var/lib/jenkins/workspace/deploy_to_cho_y/src
+workspace=/var/lib/jenkins/workspace/kyln
 deploy_from={{workspace}}
 deploy_to=/var/www/kyln
 deploy_user=root
