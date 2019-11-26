@@ -18,7 +18,10 @@
     ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/hooks/deploy_after-symlink.yml"
     ansistrano_before_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-before-cleanup-tasks.yml"
     ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-after-cleanup-tasks.yml"
-    ansistrano_git_identity_key_path: "{{ public_key_path }}"
+
+    # Now, we should defile key_file when checkout git
+    # When we deploy from git, we will use ansistrano_git_identity_key_path
+    # ansistrano_git_identity_key_path: "{{ public_key_path }}"
 
   roles:
     - { role: ansistrano.deploy }
