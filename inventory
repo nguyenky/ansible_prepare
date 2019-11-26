@@ -9,5 +9,5 @@ deploy_user=root
 deploy_group=root
 nginx_local=miscellaneous/kyln
 nginx_remote=kyln
-git_repo=https://nguyenky1801@bitbucket.org/nguyenky1801/first_repo.git
+git_repo=git@bitbucket.org:nguyenky1801/first_repo.git
 public_key_path=/var/lib/jenkins/.ssh/cho_y
