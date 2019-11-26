@@ -9,3 +9,4 @@ deploy_user=root
 deploy_group=root
 nginx_local=miscellaneous/kyln
 nginx_remote=kyln
+git_repo=https://nguyenky1801@bitbucket.org/nguyenky1801/first_repo.git
