@@ -73,6 +73,15 @@
         dest: "/etc/nginx/sites-enabled/{{ nginx_remote }}"
         state: link
 
+    - name: adding existing user www-data to group ubuntu
+      user:
+        name: 'www-data'
+        groups: "{{ deploy_group }}"
+        append: yes
+      become: yes
+      become_user: root
+      become_method: sudo
+
   handlers:
     - name: Restart Nginx
       become: true

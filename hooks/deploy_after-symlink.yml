@@ -5,10 +5,10 @@
     owner: www-data
     group: www-data
     recurse: yes
-    mode: 0755
-  # become: yes
-  # become_method: sudo
-  # become_user: root
+    mode: 0775
+  become: yes
+  become_method: sudo
+  become_user: root
 
 - name: modify ownership & permissions of a public
   file:
@@ -16,10 +16,10 @@
     state: directory
     owner: www-data
     group: www-data
-    mode: 0755
-  # become: yes
-  # become_method: sudo
-  # become_user: root
+    mode: 0775
+  become: yes
+  become_method: sudo
+  become_user: root
 
 # - name: Database Migration
 #   shell: "cd /var/www/nfq-wiki-services/current && php artisan migrate"
