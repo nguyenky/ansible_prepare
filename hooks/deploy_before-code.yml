@@ -18,3 +18,7 @@
   local_action: shell cd {{ workspace }} && php artisan key:generate
   become: yes
   become_user: jenkins
+
+- name: restart Nginx
+  action: shell sudo service nginx restart 
+  
