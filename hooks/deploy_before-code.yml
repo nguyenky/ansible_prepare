@@ -23,3 +23,8 @@
   local_action: shell cd "{{ workspace }}" && php artisan cache:clear
   become: yes
   become_user: jenkins
+
+- name: Clear compiled
+  local_action: shell cd "{{ workspace }}" && pphp artisan clear-compiled
+  become: yes
+  become_user: jenkins
