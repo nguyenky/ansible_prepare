@@ -21,11 +21,11 @@
 #   become_method: sudo
 #   become_user: root
 
-- name: restart Nginx
-  shell: service nginx restart 
-  become: yes
-  become_method: sudo
-  become_user: "{{ deploy_user }}"
+# - name: restart Nginx
+#   shell: service nginx restart 
+#   become: yes
+#   become_method: sudo
+#   become_user: "{{ deploy_user }}"
 
 # - name: Database Migration
 #   shell: "cd /var/www/nfq-wiki-services/current && php artisan migrate"
