@@ -1,11 +1,10 @@
 - name: modify ownership & permissions of a storage
   file:
-    path: "{{ deploy_to }}/current/storage"
+    path: "{{ release_path }}/storage"
     state: directory
-    owner: www-data
-    group: www-data
-    recurse: yes
+    recurse: true
     mode: 0775
+    follow: yes
   become: yes
   become_method: sudo
   become_user: root

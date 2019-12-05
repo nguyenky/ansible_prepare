@@ -1,11 +1,10 @@
 - name: reset ownership & permissions of a storage
   file:
-    path: "{{ deploy_to }}/releases"
+    path: "{{ release_path }}/storage"
     state: directory
-    owner: "{{ deploy_user }}"
-    group: "{{ deploy_group }}"
-    recurse: yes
+    recurse: true
     mode: 0775
+    follow: yes
   become: yes
   become_method: sudo
   become_user: root
