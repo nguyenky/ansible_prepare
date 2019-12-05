@@ -25,7 +25,7 @@
     # Now, we should defile key_file when checkout git
     # When we deploy from git, we will use ansistrano_git_identity_key_path
     # ansistrano_git_identity_key_path: "{{ public_key_path }}"
-    ansistrano_shared_paths:
+    # ansistrano_shared_paths:
       # - public/uploads
       # - storage
 
