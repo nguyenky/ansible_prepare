@@ -10,7 +10,7 @@
     ansistrano_deploy_from: "{{ deploy_from }}/."
     ansistrano_deploy_to: "{{ deploy_to }}"
     ansistrano_keep_releases: 3
-    ansistrano_deploy_via: "copy"
+    ansistrano_deploy_via: "rsync"
     ansistrano_rsync_extra_params: --exclude=.git
     ansistrano_ensure_shared_paths_exist: yes
     ansistrano_ensure_basedirs_shared_files_exist: yes
