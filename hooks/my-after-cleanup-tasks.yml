@@ -10,13 +10,13 @@
   become_method: sudo
   become_user: root
 
-- name: modify ownership & permissions of a public
-  file:
-    path: "{{ deploy_to }}/current/public"
-    state: directory
-    owner: www-data
-    group: www-data
-    mode: 0755
-  become: yes
-  become_method: sudo
-  become_user: root
+# - name: modify ownership & permissions of a public
+#   file:
+#     path: "{{ deploy_to }}/current/public"
+#     state: directory
+#     owner: www-data
+#     group: www-data
+#     mode: 0755
+#   become: yes
+#   become_method: sudo
+#   become_user: root

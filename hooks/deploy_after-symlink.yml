@@ -10,16 +10,16 @@
   become_method: sudo
   become_user: root
 
-- name: modify ownership & permissions of a public
-  file:
-    path: "{{ deploy_to }}/current/public"
-    state: directory
-    owner: www-data
-    group: www-data
-    mode: 0775
-  become: yes
-  become_method: sudo
-  become_user: root
+# - name: modify ownership & permissions of a public
+#   file:
+#     path: "{{ deploy_to }}/current/public"
+#     state: directory
+#     owner: www-data
+#     group: www-data
+#     mode: 0775
+#   become: yes
+#   become_method: sudo
+#   become_user: root
 
 - name: restart Nginx
   shell: service nginx restart 

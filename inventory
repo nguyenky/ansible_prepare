@@ -5,8 +5,8 @@
 workspace=/var/lib/jenkins/workspace/kyln
 deploy_from={{workspace}}
 deploy_to=/var/www/kyln
-deploy_user=root
-deploy_group=root
+deploy_user=lenguyenky
+deploy_group=lenguyenky
 nginx_local=miscellaneous/kyln
 nginx_remote=kyln
 git_repo=https://github.com/nguyenky/current.git
