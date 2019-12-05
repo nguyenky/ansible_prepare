@@ -26,7 +26,7 @@
     # When we deploy from git, we will use ansistrano_git_identity_key_path
     # ansistrano_git_identity_key_path: "{{ public_key_path }}"
     ansistrano_shared_paths:
-      - public/uploads
+      # - public/uploads
       - storage
 
   roles:
