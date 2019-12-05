@@ -6,6 +6,7 @@
   become_method: sudo
   gather_facts: no
   vars:
+    release_path: "{{ ansistrano_release_path.stdout }}"
     ansistrano_deploy_from: "{{ deploy_from }}/."
     ansistrano_deploy_to: "{{ deploy_to }}"
     ansistrano_keep_releases: 3
