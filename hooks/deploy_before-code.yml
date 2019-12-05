@@ -9,10 +9,10 @@
   become: yes
   become_user: jenkins
 
-# - name: Generate key
-#   local_action: shell cd "{{ workspace }}" && php artisan key:generate
-#   become: yes
-#   become_user: jenkins
+- name: Generate key
+  local_action: shell cd "{{ workspace }}" && php artisan key:generate
+  become: yes
+  become_user: jenkins
 
 - name: Composer Install
   local_action: shell cd "{{ workspace }}" && composer install
