@@ -73,7 +73,7 @@
         dest: "/etc/nginx/sites-enabled/{{ nginx_remote }}"
         state: link
 
-    - name: adding existing user www-data to group ubuntu
+    - name: adding existing user www-data to group deploy
       user:
         name: 'www-data'
         groups: "{{ deploy_group }}"
