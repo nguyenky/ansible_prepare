@@ -18,3 +18,8 @@
   local_action: shell cd "{{ workspace }}" && composer install
   become: yes
   become_user: jenkins
+
+- name: Clear cache
+  local_action: shell cd "{{ workspace }}" && php artisan cache:clear
+  become: yes
+  become_user: jenkins
