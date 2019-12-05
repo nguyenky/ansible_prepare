@@ -2,9 +2,9 @@
 - name: "Deploy laravel_demo laravel app"
   hosts: cho_y
   become: yes
-  become_user: root
-  become_method: sudo
-  gather_facts: no
+  become_user: lenguyenky
+  # gather_facts: no
+
   vars:
     release_path: "{{ ansistrano_release_path.stdout }}"
     ansistrano_deploy_from: "{{ deploy_from }}/."
@@ -15,14 +15,20 @@
     ansistrano_rsync_extra_params: --exclude=.git
     ansistrano_ensure_shared_paths_exist: yes
     ansistrano_ensure_basedirs_shared_files_exist: yes
+    # ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/hooks/deploy_before-code.yml"
+    # ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/hooks/deploy_after-symlink.yml"
+    # ansistrano_before_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-before-cleanup-tasks.yml"
+    # ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-after-cleanup-tasks.yml"
+
     ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/hooks/deploy_before-code.yml"
-    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/hooks/deploy_after-symlink.yml"
-    ansistrano_before_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-before-cleanup-tasks.yml"
-    ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/hooks/my-after-cleanup-tasks.yml"
+    ansistrano_after_symlink_shared_tasks_file: "{{ playbook_dir }}/hooks/deploy_after-symlink-shared.yml"
 
     # Now, we should defile key_file when checkout git
     # When we deploy from git, we will use ansistrano_git_identity_key_path
     # ansistrano_git_identity_key_path: "{{ public_key_path }}"
-
+    ansistrano_shared_paths:
+      - public/uploads
+      - storage
+      
   roles:
     - { role: ansistrano.deploy }

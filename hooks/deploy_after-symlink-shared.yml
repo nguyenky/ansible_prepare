@@ -11,27 +11,28 @@
 
 # - name: modify ownership & permissions of a public
 #   file:
-#     path: "{{ deploy_to }}/current/public"
+#     path: "{{ release_path }}/public"
 #     state: directory
-#     owner: www-data
-#     group: www-data
+#     recurse: true
 #     mode: 0775
+#     follow: yes
 #   become: yes
 #   become_method: sudo
 #   become_user: root
 
-# - name: restart Nginx
-#   shell: service nginx restart 
-#   become: yes
-#   become_method: sudo
-#   become_user: "{{ deploy_user }}"
-
 # - name: Database Migration
-#   shell: "cd /var/www/nfq-wiki-services/current && php artisan migrate"
+#   shell: "cd {{ release_path }} && php artisan migrate"
 #   become: yes
 #   become_user: www-data
 
 # - name: Restart PM2
-#   shell: "cd /var/www/nfq-wiki-services/current && /bin/bash -c 'source $HOME/.nvm/nvm.sh && pm2 startOrRestart worker.yml'"
+#   shell: "cd {{ release_path }} && /bin/bash -c 'source $HOME/.nvm/nvm.sh && pm2 startOrRestart worker.yml'"
 #   become: yes
 #   become_user: ubuntu
+
+- name: Reload PHP FPM
+  become: yes
+  become_user: root
+  service:
+    name: php7.2-fpm
+    state: reloaded

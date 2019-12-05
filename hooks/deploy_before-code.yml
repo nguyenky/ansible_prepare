@@ -1,21 +1,15 @@
 # - name: Git Checkout
-#   local_action: git repo={{git_repo}} dest="{{ workspace }}" force=yes update=yes version=master depth=1 key_file={{public_key_path}}
+#   local_action: git repo=git@git.nfq.asia:insider-wiki/nfq-wiki-services.git dest="{{ workspace }}" force=yes update=yes version=staging depth=1
 #   become: yes
 #   become_user: jenkins
 
 - name: Copy Env file
   local_action: copy src={{ playbook_dir }}/env-files/.env dest={{ workspace }}/.env owner=jenkins group=jenkins mode=0644
-  delegate_to: cho_y
+  delegate_to: localhost
   become: yes
   become_user: jenkins
 
 - name: Composer Install
-  local_action: shell cd {{ workspace }} && composer install
+  local_action: shell cd "{{ workspace }}" && composer install
   become: yes
   become_user: jenkins
-
-- name: Generate key
-  local_action: shell cd {{ workspace }} && php artisan key:generate
-  become: yes
-  become_user: jenkins
-
