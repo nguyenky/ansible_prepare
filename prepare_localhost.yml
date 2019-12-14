@@ -1,9 +1,10 @@
 ---
 - hosts: localhost
-  become: yes
-  become_user: root
+  # become: yes
+  # become_user: root
   # become_method: sudo
-  gather_facts: no
+  # gather_facts: no
+  connection: local 
   tasks:
     - name: Ping
       ping:
