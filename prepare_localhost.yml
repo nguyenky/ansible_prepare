@@ -1,16 +1,16 @@
 ---
 - hosts: localhost
   connection: local
-  become: yes
+  # become: yes
   become_user: lenguyenky
-  become_method: sudo
-  gather_facts: no
+  # become_method: sudo
+  # gather_facts: no
   tasks:
     - name: Ping
       ping:
 
-    - name: Install Composer
-      shell: apt install composer -y
+    - name: Ask
+      shell: whoami
 
     - name: Add repository for PHP
       apt_repository:
