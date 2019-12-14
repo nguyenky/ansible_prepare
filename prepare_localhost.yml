@@ -1,0 +1,97 @@
+---
+- hosts: localhost
+  # become: yes
+  # become_user: root
+  # become_method: sudo
+  # gather_facts: no
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: Add repository for PHP
+      apt_repository:
+        repo: ppa:ondrej/php
+        state: present
+        update_cache: yes
+
+    - name: install essential packages
+      apt:
+        name: "{{ system_packages }}"
+        update_cache: yes
+      vars:
+        system_packages:
+          - nano
+          - lsof
+          - git
+          - zip
+          - htop
+          - wget
+          - curl
+          - iotop
+          - unzip
+          - nginx
+          - php7.2-fpm
+
+    - shell: php --version
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines
+
+    - name: Install PHP packages
+      apt:
+        name:
+          - php7.2-gd
+          - php7.2-intl
+          - php7.2-xsl
+          - php7.2-xml
+          - php7.2-mbstring
+        state: latest
+
+    - name: Install Composer {{test_var}}
+      shell: apt install composer -y
+
+  #   - name: create deploy directory
+  #     file:
+  #       path: "{{ deploy_to }}"
+  #       state: "directory" 
+  #       owner: "{{ deploy_user }}"
+  #       group: "{{ deploy_group }}"
+  #       mode: 0755
+  #       recurse: yes
+
+  #   - name: copy nginx config file to remote
+  #     copy:
+  #       src: "{{ nginx_local }}"
+  #       dest: "/etc/nginx/sites-available/{{ nginx_remote }}"
+  #       owner: "{{ deploy_user }}"
+  #       group: "{{ deploy_group }}"
+  #       mode: 0644
+
+  #   - name: link nginx file
+  #     file:
+  #       src: "/etc/nginx/sites-available/{{ nginx_remote }}"
+  #       dest: "/etc/nginx/sites-enabled/{{ nginx_remote }}"
+  #       state: link
+
+  #   - name: adding existing user www-data to group deploy
+  #     user:
+  #       name: www-data
+  #       groups: "{{ deploy_group }}"
+  #       append: yes
+  #     become: yes
+  #     become_user: root
+  #     become_method: sudo
+
+  # handlers:
+  #   - name: Restart Nginx
+  #     become: true
+  #     service:
+  #       name: nginx
+  #       state: restarted
+
+  #   - name: Restart PHP-FPM
+  #     become: true
+  #     service:
+  #       name: php7.2-fpm
+  #       state: restarted
