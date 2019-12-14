@@ -1,10 +1,10 @@
 ---
 - hosts: localhost
   connection: local
-  # become: yes
+  become: yes
   become_user: lenguyenky
-  # become_method: sudo
-  # gather_facts: no
+  become_method: sudo
+  gather_facts: no
   tasks:
     - name: Ping
       ping:
@@ -14,7 +14,7 @@
 
     - debug:
         var: shell_result.stdout_lines
-        
+
     - name: Add repository for PHP
       apt_repository:
         repo: ppa:ondrej/php

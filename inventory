@@ -11,3 +11,7 @@ nginx_local=miscellaneous/kyln
 nginx_remote=kyln
 git_repo=https://github.com/nguyenky/current.git
 public_key_path=/var/lib/jenkins/.ssh/cho_y
+
+
+[localhost:vars]
+ansible_sudo_pass=123456
