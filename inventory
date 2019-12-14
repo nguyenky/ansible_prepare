@@ -16,4 +16,3 @@ public_key_path=/var/lib/jenkins/.ssh/cho_y
 localhost ansible_connection=local ansible_user=lenguyenky
 
 [localhost:vars]
-ansible_sudo_pass=123456
