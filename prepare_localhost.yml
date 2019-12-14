@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
-  become: yes
+  become: no
   become_user: root
-  # become_method: sudo
+  # become_method: no
   # gather_facts: no
   connection: local
   tasks:
