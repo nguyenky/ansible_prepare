@@ -9,6 +9,9 @@
     - name: Ping
       ping:
 
+    - name: Install Composer
+      shell: sudo apt install composer -y
+
     - name: Add repository for PHP
       apt_repository:
         repo: ppa:ondrej/php
