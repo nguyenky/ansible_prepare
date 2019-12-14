@@ -51,8 +51,8 @@
           - php7.2-mbstring
         state: latest
 
-    - name: Install Composer {{test_var}}
-      shell: apt install composer -y
+    # - name: Install Composer {{test_var}}
+    #   shell: apt install composer -y
 
   #   - name: create deploy directory
   #     file:
