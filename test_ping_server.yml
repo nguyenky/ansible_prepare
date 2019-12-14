@@ -1,7 +1,7 @@
 ---
-- hosts: cho_y
-  # become: yes
-  become_user: root
+- hosts: localhost
+  become: yes
+  become_user: lenguyenky
   # become_method: sudo
   # gather_facts: no
   tasks:
