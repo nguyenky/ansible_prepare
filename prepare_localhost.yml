@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   become: yes
-  # become_user: lenguyenky
+  become_user: root
   # become_method: sudo
   # gather_facts: no
   connection: local
