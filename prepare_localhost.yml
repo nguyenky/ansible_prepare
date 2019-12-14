@@ -9,9 +9,12 @@
     - name: Ping
       ping:
 
-    - name: Ask
-      shell: whoami
+    - shell: whoami
+      register: shell_result
 
+    - debug:
+        var: shell_result.stdout_lines
+        
     - name: Add repository for PHP
       apt_repository:
         repo: ppa:ondrej/php
