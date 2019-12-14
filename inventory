@@ -11,8 +11,3 @@ nginx_local=miscellaneous/kyln
 nginx_remote=kyln
 git_repo=https://github.com/nguyenky/current.git
 public_key_path=/var/lib/jenkins/.ssh/cho_y
-
-[localhost]
-localhost ansible_connection=local ansible_user=lenguyenky
-
-[localhost:vars]
